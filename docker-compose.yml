@@ -1,0 +1,9 @@
+version: '3'
+services:
+  pipeline:
+    image: jenkins/jenkins:2.122-alpine
+    volumes: 
+      - ./vol/jenkins:/var/jenkins_home
+    ports:
+      - 8080:8080
+      - 50000:50000
