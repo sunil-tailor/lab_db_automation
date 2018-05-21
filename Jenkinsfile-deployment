@@ -1,0 +1,16 @@
+#!groovy
+
+pipeline {
+    agent any
+    parameters {
+        string(name: 'deploy codes', defaultValue: 'NONE', description: 'List of SQL Req codes')
+    }
+    stages {
+        stage('Example') {
+            steps {
+                echo "${params.Greeting} World!"
+            }
+        }
+    }
+}
+
