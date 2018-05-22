@@ -29,7 +29,8 @@ pipeline {
         }
         stage ('Creating Template') {
             steps {
-               
+                sh 'bin/nextReq.sh'
+                sh ''''
                 echo "REQ CODE: " + reqName
                 echo "SQL UPDATE FOR: "+ $(params.title)
                 def contents = ''
@@ -38,6 +39,7 @@ pipeline {
                 contents = contents + "note=" + $(params.note) + "\n"
 
                 echo contents
+                '''
             }
         }
     }
