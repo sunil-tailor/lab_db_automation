@@ -23,6 +23,9 @@ pipeline {
     stages {
         stage ('Clone Project') {
             steps {
+                echo "SQL UPDATE FOR: " + $(params.title) 
+                echo "email: " + $(params.email)
+                echo "note" + $(params.note)   
                 git 'https://github.com/sunil-tailor/lab_db_automation'
             }
 
@@ -30,7 +33,7 @@ pipeline {
         stage ('Creating Template') {
             steps {
                 sh 'bin/nextReq.sh > result'
-                reqCode = readFile('result').split("\r?\n")
+
 
                 sh '''
                 echo "REQ CODE: " + reqName
