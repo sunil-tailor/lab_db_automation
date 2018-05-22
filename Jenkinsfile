@@ -22,9 +22,11 @@ pipeline {
     }
     stages {
         stage ('Clone Project') {
-            echo "SQL UPDATE FOR: $(params.title)" 
-            echo "email: $(params.email)"
-            echo "note: $(params.note)"
+            git url: https://github.com/sunil-tailor/lab_db_automation.git   
+
+            echo "SQL UPDATE FOR: ${params.title}" 
+            echo "email: ${params.email}"
+            echo "note: ${params.note}"
             
             steps {
     
@@ -39,7 +41,7 @@ pipeline {
 
                 sh '''
                 echo "REQ CODE: " + reqName
-                echo "SQL UPDATE FOR: "+ $(params.title)
+                echo "SQL UPDATE FOR: "+ ${params.title}
                 def contents = ''
                 contents = contents + "title=" + $(params.title) + "\n"
                 contents = contents + "email=" + $(params.email) + "\n"
