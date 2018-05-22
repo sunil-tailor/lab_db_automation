@@ -21,25 +21,27 @@ pipeline {
                 
     }
     stages {
-        stage ('Clone Project') {
-            steps {
-                git 'https://github.com/sunil-tailor/lab_db_automation'
+        node {
+            stage ('Clone Project') {
+                steps {
+                    git 'https://github.com/sunil-tailor/lab_db_automation'
+                }
+
             }
+            stage ('Creating Template') {
+                steps {
+                    sh 'bin/nextReq.sh'
+                    sh ''''
+                    echo "REQ CODE: " + reqName
+                    echo "SQL UPDATE FOR: "+ $(params.title)
+                    def contents = ''
+                    contents = contents + "title=" + $(params.title) + "\n"
+                    contents = contents + "email=" + $(params.email) + "\n"
+                    contents = contents + "note=" + $(params.note) + "\n"
 
-        }
-        stage ('Creating Template') {
-            steps {
-                sh 'bin/nextReq.sh'
-                sh ''''
-                echo "REQ CODE: " + reqName
-                echo "SQL UPDATE FOR: "+ $(params.title)
-                def contents = ''
-                contents = contents + "title=" + $(params.title) + "\n"
-                contents = contents + "email=" + $(params.email) + "\n"
-                contents = contents + "note=" + $(params.note) + "\n"
-
-                echo contents
-                '''
+                    echo contents
+                    '''
+                }
             }
         }
     }
