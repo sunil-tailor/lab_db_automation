@@ -32,8 +32,8 @@ node {
         contents = contents + "email=" + $(params.email) + "\n"
         contents = contents + "note=" + $(params.note) + "\n"
 
-        def filename = "./updates/${reqName}/metadata.properties"
-        writeFile file: filename, text: contents
+        def filename = "./updates/" + ${reqName} + "/metadata.properties"
+        writeFile file: ${filename}, text: contents
 
 
     }
