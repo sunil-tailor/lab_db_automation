@@ -21,7 +21,12 @@ pipeline {
                 
     }
     stages {
+        stage ('Clone Project') {
+            steps {
+                git 'https://github.com/sunil-tailor/lab_db_automation'
+            }
 
+        }
         stage ('Creating Template') {
             steps {
                 def reqName = sh scripts: 'bin/nextReq.sh', returnStdout: true
