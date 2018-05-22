@@ -26,7 +26,7 @@ pipeline {
             node {
                 def reqName = sh scripts: 'bin/nextReq.sh', returnStdout: true
 
-                echo "SQL UPDATE FOR: $(params.title)"
+                echo "SQL UPDATE FOR: \$(params.title)"
                 def contents = ''
                 contents = contents + "title=$(params.title)\n"
                 contents = contents + "email=$(params.email)\n"
