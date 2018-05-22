@@ -30,7 +30,7 @@ pipeline {
         stage ('Creating Template') {
             steps {
                 sh 'bin/nextReq.sh > result'
-                def reqCode = readFile('result').split("\r?\n")
+                reqCode = readFile('result').split("\r?\n")
 
                 sh '''
                 echo "REQ CODE: " + reqName
