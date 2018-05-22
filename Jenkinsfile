@@ -29,7 +29,7 @@ pipeline {
         }
         stage ('Creating Template') {
             steps {
-                def reqName = sh scripts: 'bin/nextReq.sh', returnStdout: true
+                # def reqName = sh scripts: 'bin/nextReq.sh', returnStdout: true
                 echo "REQ CODE: " + reqName
                 echo "SQL UPDATE FOR: "+ $(params.title)
                 def contents = ''
