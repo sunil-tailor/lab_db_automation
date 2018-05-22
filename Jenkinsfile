@@ -22,10 +22,12 @@ pipeline {
     }
     stages {
         stage ('Clone Project') {
+            echo "SQL UPDATE FOR: $(params.title)" 
+            echo "email: $(params.email)"
+            echo "note: $(params.note)"
+            
             steps {
-                echo "SQL UPDATE FOR: " + $(params.title) 
-                echo "email: " + $(params.email)
-                echo "note" + $(params.note)   
+    
                 git 'https://github.com/sunil-tailor/lab_db_automation'
             }
 
