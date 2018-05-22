@@ -1,26 +1,25 @@
 #!groovy
 
-pipeline {
-    agent any
-    parameters {
-        string(
-            name: 'title',
-            defaultValue: 'test title',
-            description: 'Title for SQL update'
-        )
-        string(
-            name: 'email',
-            defaultValue: 'joe.boggs@test.com',
-            description: 'email addresses separated by comma'
-        )
-        string(
-            name: 'note',
-            defaultValue: 'Just a quick summary about this update',
-            description: 'Any extra summary information'
-        )
-                
-    }
-    node {
+
+parameters {
+    string(
+        name: 'title',
+        defaultValue: 'test title',
+        description: 'Title for SQL update'
+    )
+    string(
+        name: 'email',
+        defaultValue: 'joe.boggs@test.com',
+        description: 'email addresses separated by comma'
+    )
+    string(
+        name: 'note',
+        defaultValue: 'Just a quick summary about this update',
+        description: 'Any extra summary information'
+    )
+            
+}
+node {
         stage ('Clone Project') {
             steps {
                 git 'https://github.com/sunil-tailor/lab_db_automation'
