@@ -5,17 +5,17 @@ pipeline {
     parameters {
         string(
             name: 'title',
-            defaultValue: '',
+            defaultValue: 'test title',
             description: 'Title for SQL update'
         )
         string(
             name: 'email',
-            defaultValue: '',
+            defaultValue: 'joe.boggs@test.com',
             description: 'email addresses separated by comma'
         )
         string(
             name: 'note',
-            defaultValue: '',
+            defaultValue: 'Just a quick summary about this update',
             description: 'Any extra summary information'
         )
                 
