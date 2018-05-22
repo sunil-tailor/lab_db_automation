@@ -13,8 +13,10 @@ nozero=$(echo $padIndex | sed 's/^0*//')
 k=$(($nozero + 1))
 
 # Format new folder name to represent database update request
-REQ=$(TIMESTAMP=`date '+%Y%m%d%H%M%S'` ; printf -v j "%05d" $i ; echo $j-CBO-$TIMESTAMP)
+REQ=$(TIMESTAMP=`date '+%Y%m%d%H%M%S'` ; printf -v j "%05d" $k ; echo $j-CBO-$TIMESTAMP)
 
 echo $REQ
 
-mkdir -p updates/$REQ
+mkdir -p updates/$REQ/DEPLOY_SCRIPTS/
+mkdir -p updates/$REQ/BACKOUT_SCRIPTS/
+touch updates/$REQ/README.md
