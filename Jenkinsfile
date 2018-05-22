@@ -3,19 +3,18 @@
 pipeline {
     agent any
     parameters {
-        string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
         string(
-            title: '',
+            name: 'title',
             defaultValue: '',
             description: 'Title for SQL update'
         )
         string(
-            email: '',
+            name: 'email',
             defaultValue: '',
             description: 'email addresses separated by comma'
         )
         string(
-            note: '',
+            name: 'note',
             defaultValue: '',
             description: 'Any extra summary information'
         )
