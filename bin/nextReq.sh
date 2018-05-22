@@ -17,6 +17,6 @@ REQ=$(TIMESTAMP=`date '+%Y%m%d%H%M%S'` ; printf -v j "%05d" $k ; echo $j-CBO-$TI
 
 echo $REQ
 
-mkdir -p updates/$REQ/DEPLOY_SCRIPTS/
-mkdir -p updates/$REQ/BACKOUT_SCRIPTS/
-touch updates/$REQ/README.md
+# mkdir -p updates/$REQ/DEPLOY_SCRIPTS/
+# mkdir -p updates/$REQ/BACKOUT_SCRIPTS/
+# touch updates/$REQ/README.md
