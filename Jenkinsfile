@@ -26,7 +26,7 @@ node {
         echo "note: ${params.note}"
     }
     stage('Generating New REQ') {
-
+        def reqName = sh scripts: 'bin/nextReq.sh', returnStdout: true
     }
 
 }
