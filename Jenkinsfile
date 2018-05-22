@@ -29,8 +29,10 @@ pipeline {
         }
         stage ('Creating Template') {
             steps {
-                sh 'bin/nextReq.sh'
-                sh ''''
+                sh 'bin/nextReq.sh > result'
+                def reqCode = readFile('result').split("\r?\n")
+
+                sh '''
                 echo "REQ CODE: " + reqName
                 echo "SQL UPDATE FOR: "+ $(params.title)
                 def contents = ''
