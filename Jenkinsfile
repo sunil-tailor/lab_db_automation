@@ -21,8 +21,11 @@ pipeline {
                 
     }
     stages {
-        node {
-            stage('Creating Template') {
+
+            stage ('Clone Project') {
+                git 'https://github.com/sunil-tailor/lab_db_automation'
+            }
+            stage ('Creating Template') {
                 steps {
                     def reqName = sh scripts: 'bin/nextReq.sh', returnStdout: true
 
@@ -35,7 +38,6 @@ pipeline {
                     echo contents
                 }
             }
-        }
     }
 }
 
