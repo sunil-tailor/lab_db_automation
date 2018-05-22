@@ -21,8 +21,8 @@ pipeline {
                 
     }
     stages {
-        stage('Creating Template') {
-            node {
+        node {
+            stage('Creating Template') {
                 steps {
                     def reqName = sh scripts: 'bin/nextReq.sh', returnStdout: true
 
