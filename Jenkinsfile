@@ -23,9 +23,19 @@ node {
         echo "email: ${params.email}"
         echo "note: ${params.note}"
     }
-    stage('Generating New REQ') {
-        def reqName = sh script: 'bin/nextReq.sh', returnStdout: true
-        echo "output: ${reqName}" 
+    stage('Generating New REQ Branch') {
+        def reqName = sh script: 'bin/createNewReqBranch.sh', returnStdout: true
+        echo "output: ${reqName}"
+
+        def contents = ''
+        contents = contents + "title=" + $(params.title) + "\n"
+        contents = contents + "email=" + $(params.email) + "\n"
+        contents = contents + "note=" + $(params.note) + "\n"
+
+        def filename = "./updates/${reqName}/metadata.properties"
+        writeFile file: filename, text: contents
+
+
     }
 
 }
