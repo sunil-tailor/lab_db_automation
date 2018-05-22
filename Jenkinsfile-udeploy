@@ -1,0 +1,22 @@
+#!groovy
+
+pipeline {
+    agent any
+    parameters {
+        string(name: 'deploy codes', defaultValue: 'NONE', description: 'List of SQL Req codes')
+    }
+    stages {
+        stage('Checking REQ Codes') {
+            steps {
+                echo "${params.Greeting} World!"
+            }
+        }
+        stage('Compressing REQ Updates') {
+
+        }
+        stage('Deploying to UrbanCode CodeStation') {
+
+        }
+    }
+}
+
