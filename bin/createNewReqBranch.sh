@@ -33,6 +33,6 @@ echo '# Sample SQL file filename is the order in which scripts are executed' > 0
 echo ${REQ_BRANCH}
 
 git add updates/${REQ_BRANCH}/*
-get commit 'First Commit for Branch REQ-${REQ_BRANCH}'
+git commit 'First Commit for Branch REQ-${REQ_BRANCH}'
 git push --set-upstream origin "REQ-${REQ_BRANCH}"
  
