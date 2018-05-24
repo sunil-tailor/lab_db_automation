@@ -2,7 +2,7 @@
 
 
 
-REQ_BRANCH=$(./bin/nextReq.sh)
+REQ_BRANCH=$(./bin/stateNextReq.sh)
 TS=$(echo $REQ_BRANCH | cut -d'-' -f 3)
 
 git checkout -b "REQ-${REQ_BRANCH}"
