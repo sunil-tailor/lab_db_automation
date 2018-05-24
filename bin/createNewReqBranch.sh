@@ -34,5 +34,5 @@ echo ${REQ_BRANCH}
 
 git add updates/${REQ_BRANCH}/*
 get commit 'First Commit for Branch REQ-${REQ_BRANCH}'
-get push origin "REQ-${REQ_BRANCH}"
+git push --set-upstream origin "REQ-${REQ_BRANCH}"
  
