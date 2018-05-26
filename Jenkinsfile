@@ -74,8 +74,9 @@ node {
         echo "DEBUG: reqName: ${reqName}"
 
         // Create properties file with metadata
+/*  
         def contents = ''
-        contents = contents + "title=\"$(params.title)\"\n"
+        contents = contents + 'title="' + $(params.title) +''"\n"''
         contents = contents + "email=\"$(params.email)\"\n"
         contents = contents + "releaseTags=\"$(params.releaseTags)\"\n" 
         if (params.note == '') {
@@ -84,6 +85,7 @@ node {
 
         def filename = "./updates/${reqName}/metadata.properties"
         writeFile file: ${filename}, text: contents
+*/
 
     }
 }
