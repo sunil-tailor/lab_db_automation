@@ -53,8 +53,7 @@ node {
         echo "Release Tags: ${params.releaseTags}"
     }
     stage('Preparation') {
-        sh "git config user.email \"sunil.tailor@indexfeed.com\""
-        sh "git config user.name \"Sunil Tailor\""
+
     }
     stage('checkout') {
         checkout([
