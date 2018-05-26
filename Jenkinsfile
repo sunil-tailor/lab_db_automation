@@ -62,6 +62,9 @@ node {
             extensions: scm.extensions + [[$class: 'LocalBranch'], [$class: 'WipeWorkspace']],
             userRemoteConfigs: [[ 'git@github.com:sunil-tailor/lab_db_automation.git' ]]
         ])
+
+        sh "git config -g user.email \"sunil.tailor@indexfeed.com\""
+        sh "git config -g user.name \"Sunil Tailor\""
     }
 
     stage('Creating NEW Branch REQ') {
