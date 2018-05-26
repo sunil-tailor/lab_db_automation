@@ -52,7 +52,11 @@ node {
         echo "note: ${params.note}"
         echo "Release Tags: ${params.releaseTags}"
     }
-    stage() {
+    stage('Preparation') {
+        sh "git config user.email \"sunil.tailor@indexfeed.com\""
+        sh "git config user.name \"Sunil Tailor\""
+    }
+    stage('checkout') {
         checkout([
             $class: 'GitSCM',
             branches: scm.branches,
@@ -60,6 +64,7 @@ node {
             userRemoteConfigs: [[ 'git@github.com:sunil-tailor/lab_db_automation.git' ]]
         ])
     }
+
     stage('Creating NEW Branch REQ') {
         sh 'chmod 755 ./bin/*.sh'
         def reqCode = sh( script: 'bin/state-nextReq.sh', returnStdout: true ).trim()
