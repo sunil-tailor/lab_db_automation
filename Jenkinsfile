@@ -2,19 +2,7 @@
 
 import java.text.SimpleDateFormat
 
-def methodName(req) { 
-    // Method code goes here 
-    def dateFormat = new SimpleDateFormat("yyyyMMddHHmmss")
-    def date = new Date()
-    def newTS = dateFormat.format(date)
 
-    (code, tag, ts) = req.split('-')
-    def int num = code as Integer
-    def newNum = num + 1
-    def reqCode = newNum.toString().padLeft(5, '0') 
-
-    return "${reqCode}-${tag}-${newTS}"
-}
 
 
 properties([parameters([ 
@@ -41,6 +29,20 @@ properties([parameters([
 ])])
 
 node {
+    def methodName(req) { 
+        // Method code goes here 
+        def dateFormat = new SimpleDateFormat("yyyyMMddHHmmss")
+        def date = new Date()
+        def newTS = dateFormat.format(date)
+
+        (code, tag, ts) = req.split('-')
+        def int num = code as Integer
+        def newNum = num + 1
+        def reqCode = newNum.toString().padLeft(5, '0') 
+
+        return "${reqCode}-${tag}-${newTS}"
+    }
+
     stage('Cleaning Workspace') {
         deleteDir()
     }
