@@ -3,8 +3,6 @@
 import java.text.SimpleDateFormat
 
 
-
-
 properties([parameters([ 
     string(
         name: 'title',
@@ -29,6 +27,8 @@ properties([parameters([
 ])])
 
 node {
+
+/*
     def methodName(req) { 
         // Method code goes here 
         def dateFormat = new SimpleDateFormat("yyyyMMddHHmmss")
@@ -42,6 +42,7 @@ node {
 
         return "${reqCode}-${tag}-${newTS}"
     }
+*/ 
 
     stage('Cleaning Workspace') {
         deleteDir()
@@ -93,7 +94,7 @@ node {
         
         def currentReqCode = sh('ls -1 updates/ | sort -V | tail -n 1)').trim()
 
-        if (${currentReqCode} == '') {
+        if ($currentReqCode == '') {
             println "its blank"
         }
 
