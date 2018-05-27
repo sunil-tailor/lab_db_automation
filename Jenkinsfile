@@ -92,12 +92,12 @@ node {
         sh 'chmod 755 ./bin/*.sh'
         // def reqCode = sh( script: 'bin/state-nextReq.sh', returnStdout: true ).trim()
         
-        def currentReqCode = sh('ls -1 updates/ | sort -V | tail -n 1)').trim()
-
+        //  def currentReqCode = sh('ls -1 updates/ | sort -V | tail -n 1)').trim()
+/*
         if ($currentReqCode == '') {
             println "its blank"
         }
-
+*/
         // def reqName = sh( script: 'bin/createNewReqBranch.sh', returnStdout: true ).trim()
 
         echo "DEBUG: NewCode: ${currentReqCode}"
