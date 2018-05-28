@@ -88,7 +88,7 @@ node {
         sh 'chmod 755 ./bin/*.sh'
         // def reqCode = sh( script: 'bin/state-nextReq.sh', returnStdout: true ).trim()
         
-        def currentReqCode = sh('ls -1 updates/ | sort -V | tail -n 1').trim()
+        def currentReqCode = sh('ls -1 updates/ | sort -V | tail -n 1')
 
 
         if ($currentReqCode == '') {
