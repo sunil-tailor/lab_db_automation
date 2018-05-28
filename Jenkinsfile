@@ -87,16 +87,15 @@ node {
     stage('Creating NEW Branch REQ') {
         sh 'chmod 755 ./bin/*.sh'
         // def reqCode = sh( script: 'bin/state-nextReq.sh', returnStdout: true ).trim()
-/*        
+        
         def currentReqCode = sh('ls -1 updates/ | sort -V | tail -n 1')
-
 
         if ($currentReqCode == '') {
             println "its blank"
-            $currentReqCode = '00000-CBO-20180524235018'
+            $currentReqCode = '00001-CBO-00000000000000'
         }
-*/
-        def sampleReqCode = '00001-CBO-20180524235018'
+                            
+        def sampleReqCode = '00001-CBO-00000000000000'
         def newREQ = nextReqCode(sampleReqCode)
 
 
@@ -104,8 +103,8 @@ node {
         echo "DEBUG: sampleReqCode   : ${sampleReqCode}"
         echo "DEBUG: newREQ          : ${newREQ} "
         // echo "DEBUG: NewCode: ${currentReqCode}"
-        echo "DEBUG: reqCode         : ${reqCode}"
-        echo "DEBUG: reqName         : ${reqName}"
+        // echo "DEBUG: reqCode         : ${reqCode}"
+        // echo "DEBUG: reqName         : ${reqName}"
 
         // Create properties file with metadata
 /*  
