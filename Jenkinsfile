@@ -175,7 +175,7 @@ node {
             writeFile file: "001-${ts}.sql", text: ''
             writeFile file: "002-${ts}.sql", text: ''
         }
-        writeFile file: "./updates/${branchName}/README.md" 
+        writeFile file: "./updates/${branchName}/README.md", text: ''
 
         sh "git add updates/${branchName}/*"
         sh "git commit -am 'First Commit for Branch ${branchName}'"
