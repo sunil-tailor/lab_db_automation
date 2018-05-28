@@ -135,15 +135,7 @@ node {
         }
 */
 
-        def sampleReqCode = '00001-CBO-00000000000000'
-        def newREQ = nextReqCode(sampleReqCode)
-
-
-
         // def reqName = sh( script: 'bin/createNewReqBranch.sh', returnStdout: true ).trim()
-        echo "DEBUG: sampleReqCode   : ${sampleReqCode}"
-        echo "DEBUG: newREQ          : ${newREQ} "
-
         // echo "DEBUG: reqCode         : ${reqCode}"
         // echo "DEBUG: reqName         : ${reqName}"
 
@@ -163,7 +155,15 @@ node {
 
     }
     stage('Generated Branch') { 
-        echo "REQ-${newReqCode}"
+        
+        (code, tag, ts) = newReqCode.split('-') 
+        def branchName = "REQ-${newReqCode}"
+
+        echo "code        : ${code}"
+        echo "tag         : ${tag}"
+        echo "timestamp   : ${ts}"
+        ecbo "branch Name : ${branchName}"
+
 
     }
 }
