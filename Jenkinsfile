@@ -92,10 +92,15 @@ node {
             echo 'Yes - system initalised'
             def currentReqCode = sh( script: 'cat state/requests.txt | tail -n 1', returnStdout: true )
             def newReqCode = nextReqCode( currentReqCode )
+            sh "cat ${newReqCode} >> state/requests.txt"
+            sh "git add state/requests.txt"
+            sh "git commit 'created new REQ'"
+            sh "git push"
             echo "DEBUG: currentReqCode  : ${currentReqCode}"
             echo "DEBUG: newReqCode      : ${newReqCode}"            
         } else {
-            echo 'No'
+            currentBuild.result = 'FAILURE'
+            echo 'System - You need to run the ./bin/initialise.sh and commit to repository'
         }
 
 /*
