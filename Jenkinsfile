@@ -90,12 +90,11 @@ node {
         
         def currentReqCode = sh('ls -1 updates/ | sort -V | tail -n 1')
 
-/*
-        if ($currentReqCode == '') {
+        if ($currentReqCode == null || $currentReqCode.empty) {
             println "its blank"
             $currentReqCode = '00001-CBO-00000000000000'
         }
- */                           
+                           
         def sampleReqCode = '00001-CBO-00000000000000'
         def newREQ = nextReqCode(sampleReqCode)
 
