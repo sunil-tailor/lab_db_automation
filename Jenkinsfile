@@ -94,11 +94,6 @@ node {
             echo 'No'
         }
 
-)
-        if ( isInitialised.exists() ) {
-            echo "System - state initialised "
-        }
-
 /*
         // def reqCode = sh( script: 'bin/state-nextReq.sh', returnStdout: true ).trim()
         def currentReqCode = null        
