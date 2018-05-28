@@ -97,12 +97,14 @@ node {
                            
         def sampleReqCode = '00001-CBO-00000000000000'
         def newREQ = nextReqCode(sampleReqCode)
+        def newReqCode = nextReqCode($currentReqCode)
 
 
         // def reqName = sh( script: 'bin/createNewReqBranch.sh', returnStdout: true ).trim()
         echo "DEBUG: sampleReqCode   : ${sampleReqCode}"
         echo "DEBUG: newREQ          : ${newREQ} "
-        // echo "DEBUG: NewCode: ${currentReqCode}"
+        echo "DEBUG: currentReqCode  : ${currentReqCode}"
+        echo "DEBUG: newReqCode      : ${newReqCode}"
         // echo "DEBUG: reqCode         : ${reqCode}"
         // echo "DEBUG: reqName         : ${reqName}"
 
