@@ -181,7 +181,10 @@ node {
 
         sh "git add updates/${branchName}/*"
         sh "git commit -am 'First Commit for Branch ${branchName}'"
-        sh "git push --set-upstream origin ${branchName}"
+        // Pushing everything to remote repository
+        sshagent( credentials: ['jenkins'] ) {
+            sh "git push --set-upstream origin ${branchName}"
+        }
 
     }
 }
