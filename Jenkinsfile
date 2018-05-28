@@ -87,7 +87,7 @@ node {
     stage('Creating NEW Branch REQ') {
         sh 'chmod 755 ./bin/*.sh'
         // def reqCode = sh( script: 'bin/state-nextReq.sh', returnStdout: true ).trim()
-        
+/*        
         def currentReqCode = sh('ls -1 updates/ | sort -V | tail -n 1')
 
 
@@ -95,15 +95,15 @@ node {
             println "its blank"
             $currentReqCode = '00000-CBO-20180524235018'
         }
-
+*/
         def test = sampleReqCode('00001-CBO-20180524235018')
-        def newREQ = methodName(currentReqCode)
+        def newREQ = methodName(sampleReqCode)
 
 
         // def reqName = sh( script: 'bin/createNewReqBranch.sh', returnStdout: true ).trim()
         echo "DEBUG: test   : ${test}"
         echo "DEBUG: newREQ : ${newREQ} "
-        echo "DEBUG: NewCode: ${currentReqCode}"
+        // echo "DEBUG: NewCode: ${currentReqCode}"
         echo "DEBUG: reqCode: ${reqCode}"
         echo "DEBUG: reqName: ${reqName}"
 
