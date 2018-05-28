@@ -107,12 +107,12 @@ node {
             def newReqCode = nextReqCode($currentReqCode)
             echo "DEBUG: currentReqCode  : ${currentReqCode}"
             echo "DEBUG: newReqCode      : ${newReqCode}"
-*/
         } else {
             def newReqCode = nextReqCode($currentReqCode)
             echo "DEBUG: currentReqCode  : ${currentReqCode}"
             echo "DEBUG: newReqCode      : ${newReqCode}"
         }
+*/
 
         def sampleReqCode = '00001-CBO-00000000000000'
         def newREQ = nextReqCode(sampleReqCode)
