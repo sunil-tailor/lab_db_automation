@@ -90,7 +90,7 @@ node {
         // Initialised state folder
         if (fileExists('state/initalised')) {
             echo 'Yes - system initalised'
-            def currentReqCode = sh 'cat state/requests.txt | tail -n 1'
+            def currentReqCode = sh( script: 'cat state/requests.txt | tail -n 1', returnStdout: true ).trim()
             def newReqCode = nextReqCode($currentReqCode)
             echo "DEBUG: currentReqCode  : ${currentReqCode}"
             echo "DEBUG: newReqCode      : ${newReqCode}"            
