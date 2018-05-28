@@ -102,7 +102,7 @@ node {
 
             // Pushing everything to remote repository
             // sshagent( credentials: ['aec45e23-c5aa-4ddd-8a0f-63a21d20191f'] ) {
-            sshagent( credentials: ['jenkins'] ) {
+            sshagent( ['jenkins'] {
 
                 sh "git push origin master"
             }
