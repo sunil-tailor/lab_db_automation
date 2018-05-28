@@ -86,20 +86,24 @@ node {
     }   
     stage('Creating NEW Branch REQ') {
         sh 'chmod 755 ./bin/*.sh'
-        // def reqCode = sh( script: 'bin/state-nextReq.sh', returnStdout: true ).trim()
 
+        // Initialised state folder
+        def isInitialised = new File('state/initalised')
+        if ( isInitialised.exists() ) {
+            echo "System - state initialised "
+        }
+
+/*
+        // def reqCode = sh( script: 'bin/state-nextReq.sh', returnStdout: true ).trim()
         def currentReqCode = null        
         $currentReqCode = sh( script: 'ls -1 updates/ | sort -V | tail -n 1', returnStdout: true )
 
         echo "TEST -- ${currentReqCode}"
         echo $currentReqCode.toString() 
 
-
         if (currentReqCode.toString() == '') {
             echo "its blank"
-
             $currentReqCode = '00001-CBO-00000000000000'
-/*
             def newReqCode = nextReqCode($currentReqCode)
             echo "DEBUG: currentReqCode  : ${currentReqCode}"
             echo "DEBUG: newReqCode      : ${newReqCode}"
