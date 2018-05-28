@@ -85,7 +85,7 @@ node {
         // sh "git config -g user.email \"jenkins@indexfeed.com\""
         // sh "git config -g user.name \"Jenkins User\""
     }   
-    stage('Creating NEW Branch REQ') {
+    stage('Creating NEW Branch REQ Code') {
         sh 'chmod 755 ./bin/*.sh'
 
         // Initialised state folder
@@ -158,6 +158,10 @@ node {
         def filename = "./updates/${reqName}/metadata.properties"
         writeFile file: ${filename}, text: contents
 */
+
+    }
+    stage('Generated Branch') { 
+        echo "REQ-${newReqCode}"
 
     }
 }
