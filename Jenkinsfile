@@ -96,11 +96,14 @@ node {
 
 
         if (currentReqCode.toString() == '') {
-            println "its blank"
+            echo "its blank"
+
             $currentReqCode = '00001-CBO-00000000000000'
+/*
             def newReqCode = nextReqCode($currentReqCode)
             echo "DEBUG: currentReqCode  : ${currentReqCode}"
             echo "DEBUG: newReqCode      : ${newReqCode}"
+*/
         } else {
             def newReqCode = nextReqCode($currentReqCode)
             echo "DEBUG: currentReqCode  : ${currentReqCode}"
