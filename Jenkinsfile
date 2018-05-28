@@ -95,12 +95,9 @@ node {
             sh "echo ${newReqCode} >> state/requests.txt"
             sh "git add state/requests.txt"
             sh "git commit 'created new REQ'"
-            sh "git push"
 
             // Pushing everything to remote repository
             sshagent(['aec45e23-c5aa-4ddd-8a0f-63a21d20191f']) {
-                sh "git push"
-                sh "git checkout master"
                 sh "git push"
             }
 
