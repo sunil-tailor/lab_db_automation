@@ -96,6 +96,14 @@ node {
             sh "git add state/requests.txt"
             sh "git commit 'created new REQ'"
             sh "git push"
+
+            // Pushing everything to remote repository
+            sshagent(['jenkins']) {
+                sh "git push"
+                sh "git checkout master"
+                sh "git push"
+            }
+
             echo "DEBUG: currentReqCode  : ${currentReqCode}"
             echo "DEBUG: newReqCode      : ${newReqCode}"            
         } else {
