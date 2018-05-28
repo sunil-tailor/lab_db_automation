@@ -78,7 +78,8 @@ node {
             $class: 'GitSCM',
             branches: scm.branches,
             extensions: scm.extensions + [[$class: 'LocalBranch'], [$class: 'WipeWorkspace']],
-            userRemoteConfigs: [ [ credentialsId: 'aec45e23-c5aa-4ddd-8a0f-63a21d20191f', url: 'git@github.com:sunil-tailor/lab_db_automation.git' ]]
+            // userRemoteConfigs: [ [ credentialsId: 'aec45e23-c5aa-4ddd-8a0f-63a21d20191f', url: 'git@github.com:sunil-tailor/lab_db_automation.git' ]]
+            userRemoteConfigs: [ [ credentialsId: 'jenkins', url: 'git@github.com:sunil-tailor/lab_db_automation.git' ]]
         ])
 
         // sh "git config -g user.email \"jenkins@indexfeed.com\""
@@ -97,7 +98,8 @@ node {
             sh "git commit 'created new REQ'"
 
             // Pushing everything to remote repository
-            sshagent(['aec45e23-c5aa-4ddd-8a0f-63a21d20191f']) {
+            // sshagent( credentials: ['aec45e23-c5aa-4ddd-8a0f-63a21d20191f'] ) {
+            sshagent( credentials: ['jenkins'] ) {
                 sh "git push"
             }
 
