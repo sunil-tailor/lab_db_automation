@@ -88,7 +88,13 @@ node {
         sh 'chmod 755 ./bin/*.sh'
 
         // Initialised state folder
-        def isInitialised = new File('state/initalised')
+        if (fileExists('state/initalised')) {
+            echo 'Yes - system initalised'
+        } else {
+            echo 'No'
+        }
+
+)
         if ( isInitialised.exists() ) {
             echo "System - state initialised "
         }
