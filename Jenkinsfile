@@ -180,7 +180,7 @@ node {
 
 
         sh "git add updates/${branchName}/*"
-        sh "git commit 'First Commit for Branch ${branchName}'"
+        sh "git commit -am 'First Commit for Branch ${branchName}'"
         sh "git push --set-upstream origin ${branchName}"
 
     }
