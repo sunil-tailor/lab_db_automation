@@ -90,7 +90,7 @@ node {
         
         def $currentReqCode = sh( script: 'ls -1 updates/ | sort -V | tail -n 1', returnStdout: true )
 
-        if ($currentReqCode == null || $currentReqCode.empty) {
+        if ($currentReqCode == null) {
             println "its blank"
             $currentReqCode = '00001-CBO-00000000000000'
         }
