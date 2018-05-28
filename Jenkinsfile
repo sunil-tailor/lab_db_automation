@@ -2,19 +2,19 @@
 
 import java.text.SimpleDateFormat
 
-    def methodName(req) { 
-        // Method code goes here 
-        def dateFormat = new SimpleDateFormat("yyyyMMddHHmmss")
-        def date = new Date()
-        def newTS = dateFormat.format(date)
+def nextReqCode(req) { 
+    // Method code goes here 
+    def dateFormat = new SimpleDateFormat("yyyyMMddHHmmss")
+    def date = new Date()
+    def newTS = dateFormat.format(date)
 
-        (code, tag, ts) = req.split('-')
-        def int num = code as Integer
-        def newNum = num + 1
-        def reqCode = newNum.toString().padLeft(5, '0') 
+    (code, tag, ts) = req.split('-')
+    def int num = code as Integer
+    def newNum = num + 1
+    def reqCode = newNum.toString().padLeft(5, '0') 
 
-        return "${reqCode}-${tag}-${newTS}"
-    }
+    return "${reqCode}-${tag}-${newTS}"
+}
 
 properties([parameters([ 
     string(
@@ -40,11 +40,6 @@ properties([parameters([
 ])])
 
 node {
-
-/*
-
-*/ 
-
     stage('Cleaning Workspace') {
         deleteDir()
     }
@@ -95,12 +90,19 @@ node {
         
         def currentReqCode = sh('ls -1 updates/ | sort -V | tail -n 1)').trim()
 
+
         if ($currentReqCode == '') {
             println "its blank"
+            $currentReqCode = '00000-CBO-20180524235018'
         }
 
-        // def reqName = sh( script: 'bin/createNewReqBranch.sh', returnStdout: true ).trim()
+        def test = sampleReqCode('00001-CBO-20180524235018')
+        def newREQ = methodName(currentReqCode)
 
+
+        // def reqName = sh( script: 'bin/createNewReqBranch.sh', returnStdout: true ).trim()
+        echo "DEBUG: test   : ${test}"
+        echo "DEBUG: newREQ : ${newREQ} "
         echo "DEBUG: NewCode: ${currentReqCode}"
         echo "DEBUG: reqCode: ${reqCode}"
         echo "DEBUG: reqName: ${reqName}"
