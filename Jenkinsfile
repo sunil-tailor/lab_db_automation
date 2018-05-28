@@ -96,16 +96,16 @@ node {
             $currentReqCode = '00000-CBO-20180524235018'
         }
 */
-        def test = sampleReqCode('00001-CBO-20180524235018')
-        def newREQ = methodName(sampleReqCode)
+        def sampleReqCode = '00001-CBO-20180524235018'
+        def newREQ = nextReqCode(sampleReqCode)
 
 
         // def reqName = sh( script: 'bin/createNewReqBranch.sh', returnStdout: true ).trim()
-        echo "DEBUG: test   : ${test}"
-        echo "DEBUG: newREQ : ${newREQ} "
+        echo "DEBUG: sampleReqCode   : ${sampleReqCode}"
+        echo "DEBUG: newREQ          : ${newREQ} "
         // echo "DEBUG: NewCode: ${currentReqCode}"
-        echo "DEBUG: reqCode: ${reqCode}"
-        echo "DEBUG: reqName: ${reqName}"
+        echo "DEBUG: reqCode         : ${reqCode}"
+        echo "DEBUG: reqName         : ${reqName}"
 
         // Create properties file with metadata
 /*  
