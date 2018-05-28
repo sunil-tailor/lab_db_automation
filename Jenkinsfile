@@ -171,11 +171,11 @@ node {
         File ff = new File("./updates/${branchName}/BACKOUT_SCRIPTS/");
         ff.mkdirs();
 
-        writeFile file: "/updates/${branchName}/README.md" 
-        writeFile file: "/updates/${branchName}/DEPLOY_SCRIPTS/001-$TS.sql", text: ''
-        writeFile file: "/updates/${branchName}/DEPLOY_SCRIPTS/002-$TS.sql", text: ''
-        writeFile file: "/updates/${branchName}/BACKOUT_SCRIPTS/001-$TS.sql", text: ''
-        writeFile file: "/updates/${branchName}/BACKOUT_SCRIPTS/002-$TS.sql", text: ''
+        writeFile file: "./updates/${branchName}/README.md" 
+        writeFile file: "./updates/${branchName}/DEPLOY_SCRIPTS/001-$TS.sql", text: ''
+        writeFile file: "./updates/${branchName}/DEPLOY_SCRIPTS/002-$TS.sql", text: ''
+        writeFile file: "./updates/${branchName}/BACKOUT_SCRIPTS/001-$TS.sql", text: ''
+        writeFile file: "./updates/${branchName}/BACKOUT_SCRIPTS/002-$TS.sql", text: ''
 
 
         sh "git add updates/${branchName}/*"
