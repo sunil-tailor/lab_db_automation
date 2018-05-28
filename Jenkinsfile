@@ -94,8 +94,8 @@ node {
         echo "TEST -- ${currentReqCode}"
         echo $currentReqCode.toString() 
 
-/*
-        if ($currentReqCode.toString() == null) {
+
+        if (currentReqCode.toString() == null) {
             println "its blank"
             $currentReqCode = '00001-CBO-00000000000000'
             def newReqCode = nextReqCode($currentReqCode)
@@ -106,7 +106,7 @@ node {
             echo "DEBUG: currentReqCode  : ${currentReqCode}"
             echo "DEBUG: newReqCode      : ${newReqCode}"
         }
-*/
+
         def sampleReqCode = '00001-CBO-00000000000000'
         def newREQ = nextReqCode(sampleReqCode)
 
