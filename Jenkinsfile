@@ -162,7 +162,7 @@ node {
         echo "code        : ${code}"
         echo "tag         : ${tag}"
         echo "timestamp   : ${ts}"
-        ecbo "branch Name : ${branchName}"
+        echo "branch Name : ${branchName}"
 
 
     }
