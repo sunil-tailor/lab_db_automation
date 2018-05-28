@@ -93,6 +93,10 @@ node {
             echo 'Yes - system initalised'
             def currentReqCode = sh( script: 'cat state/requests.txt | tail -n 1', returnStdout: true )
             def newReqCode = nextReqCode( currentReqCode )
+
+            echo "DEBUG: currentReqCode  : ${currentReqCode}"
+            echo "DEBUG: newReqCode      : ${newReqCode}"      
+
             sh "git checkout master"
             sh "git config --global user.email \"jenkins@indexfeed.com\""
             sh "git config --global user.name \"Jenkins User\""
@@ -100,12 +104,10 @@ node {
             sh "git add ./state/requests.txt"
             sh "git commit 'created new REQ'"
 
-            echo "DEBUG: currentReqCode  : ${currentReqCode}"
-            echo "DEBUG: newReqCode      : ${newReqCode}"      
 
             // Pushing everything to remote repository
             // sshagent( credentials: ['aec45e23-c5aa-4ddd-8a0f-63a21d20191f'] ) {
-            sshagent( ['jenkins'] {
+            sshagent( ['jenkins'] ) {
 
                 sh "git push origin master"
             }
