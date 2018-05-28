@@ -93,12 +93,12 @@ node {
             echo 'Yes - system initalised'
             def currentReqCode = sh( script: 'cat state/requests.txt | tail -n 1', returnStdout: true )
             def newReqCode = nextReqCode( currentReqCode )
-                sh "git checkout master"
-                sh "git config --global user.email \"jenkins@indexfeed.com\""
-                sh "git config --global user.name \"Jenkins User\""
-                sh "echo ${newReqCode} >> state/requests.txt"
-                sh "git add ./state/requests.txt"
-                sh "git commit 'created new REQ'"
+            sh "git checkout master"
+            sh "git config --global user.email \"jenkins@indexfeed.com\""
+            sh "git config --global user.name \"Jenkins User\""
+            sh "echo ${newReqCode} >> state/requests.txt"
+            sh "git add ./state/requests.txt"
+            sh "git commit 'created new REQ'"
 
             // Pushing everything to remote repository
             // sshagent( credentials: ['aec45e23-c5aa-4ddd-8a0f-63a21d20191f'] ) {
@@ -107,8 +107,8 @@ node {
                 sh "git push origin master"
             }
 
-            echo "DEBUG: currentReqCode  : ${currentReqCode}"
-            echo "DEBUG: newReqCode      : ${newReqCode}"            
+            println "DEBUG: currentReqCode  : ${currentReqCode}"
+            println "DEBUG: newReqCode      : ${newReqCode}"            
         } else {
             currentBuild.result = 'FAILURE'
             echo 'System - You need to run the ./bin/initialise.sh and commit to repository'
