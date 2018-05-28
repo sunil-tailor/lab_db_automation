@@ -166,7 +166,6 @@ node {
         
         sh "git checkout -b ${branchName}"
 
-
         dir ("./updates/${branchName}/DEPLOY_SCRIPTS/") {
             writeFile file: "001-${ts}.sql", text: ''
             writeFile file: "002-${ts}.sql", text: ''
@@ -176,15 +175,14 @@ node {
             writeFile file: "001-${ts}.sql", text: ''
             writeFile file: "002-${ts}.sql", text: ''
         }
-        // writeFile file: "./updates/${branchName}/README.md" 
-
+        writeFile file: "./updates/${branchName}/README.md" 
 
         sh "git add updates/${branchName}/*"
         sh "git commit -am 'First Commit for Branch ${branchName}'"
+
         // Pushing everything to remote repository
         sshagent( credentials: ['jenkins'] ) {
             sh "git push --set-upstream origin ${branchName}"
         }
-
     }
 }
