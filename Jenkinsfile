@@ -86,8 +86,8 @@ node {
             userRemoteConfigs: [ [ 'git@github.com:sunil-tailor/lab_db_automation.git' ]]
         ])
 
-        sh "git config -g user.email \"jenkins@indexfeed.com\""
-        sh "git config -g user.name \"Jenkins User\""
+        // sh "git config -g user.email \"jenkins@indexfeed.com\""
+        // sh "git config -g user.name \"Jenkins User\""
     }   
     stage('Creating NEW Branch REQ') {
         sh 'chmod 755 ./bin/*.sh'
