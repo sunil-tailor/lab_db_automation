@@ -94,6 +94,8 @@ node {
             def currentReqCode = sh( script: 'cat state/requests.txt | tail -n 1', returnStdout: true )
             def newReqCode = nextReqCode( currentReqCode )
             sh "git checkout master"
+            sh "git config -g user.email \"jenkins@indexfeed.com\""
+            sh "git config -g user.name \"Jenkins User\""
             sh "echo ${newReqCode} >> state/requests.txt"
             sh "git add state/requests.txt"
             sh "git commit 'created new REQ'"
