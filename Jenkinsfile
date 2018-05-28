@@ -95,7 +95,7 @@ node {
         echo $currentReqCode.toString() 
 
 
-        if (currentReqCode.toString() == null) {
+        if (currentReqCode.toString() == '') {
             println "its blank"
             $currentReqCode = '00001-CBO-00000000000000'
             def newReqCode = nextReqCode($currentReqCode)
