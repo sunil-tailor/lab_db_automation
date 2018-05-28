@@ -102,13 +102,13 @@ node {
             sh "git config --global user.name \"Jenkins User\""
             sh "echo ${newReqCode} >> state/requests.txt"
             sh "git add ./state/requests.txt"
-            sh "git commit 'created new REQ'"
-            sh "git push origin master"
+
 
             // Pushing everything to remote repository
             // sshagent( credentials: ['aec45e23-c5aa-4ddd-8a0f-63a21d20191f'] ) {
             sshagent( ['jenkins'] ) {
-
+                sh "git commit 'created new REQ'"
+                sh "git push origin master"
                 sh "git push origin master"
             }
 
