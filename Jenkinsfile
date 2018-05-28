@@ -163,7 +163,24 @@ node {
         echo "tag         : ${tag}"
         echo "timestamp   : ${ts}"
         echo "branch Name : ${branchName}"
+        
+        sh "git checkout -b ${branchName}"
 
+        File f = new File("./updates/${branchName}/DEPLOY_SCRIPTS/");
+        f.mkdirs();
+        File f = new File("./updates/${branchName}/BACKOUT_SCRIPTS/");
+        f.mkdirs();
+
+        writeFile file: "/updates/${branchName}/README.md" 
+        writeFile file: "/updates/${branchName}/DEPLOY_SCRIPTS/001-$TS.sql", text: ''
+        writeFile file: "/updates/${branchName}/DEPLOY_SCRIPTS/002-$TS.sql", text: ''
+        writeFile file: "/updates/${branchName}/BACKOUT_SCRIPTS/001-$TS.sql", text: ''
+        writeFile file: "/updates/${branchName}/BACKOUT_SCRIPTS/002-$TS.sql", text: ''
+
+
+        sh "git add updates/${branchName}/*"
+        sh "git commit 'First Commit for Branch ${branchName}'"
+        sh "git push --set-upstream origin ${branchName}"
 
     }
 }
