@@ -90,7 +90,7 @@ node {
         
         def $currentReqCode = sh( script: 'ls -1 updates/ | sort -V | tail -n 1', returnStdout: true )
 
-        echo "TEST -- ${currentReqCode}
+        echo "TEST -- ${currentReqCode}"
 
 /*
         if ($currentReqCode == null) {
