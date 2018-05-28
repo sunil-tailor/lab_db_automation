@@ -168,7 +168,7 @@ node {
 
         File f = new File("./updates/${branchName}/DEPLOY_SCRIPTS/");
         f.mkdirs();
-        File f = new File("./updates/${branchName}/BACKOUT_SCRIPTS/");
+        File f =  File("./updates/${branchName}/BACKOUT_SCRIPTS/");
         f.mkdirs();
 
         writeFile file: "/updates/${branchName}/README.md" 
