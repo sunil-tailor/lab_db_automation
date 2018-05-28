@@ -98,7 +98,7 @@ node {
             sh "git push"
 
             // Pushing everything to remote repository
-            sshagent(['jenkins']) {
+            sshagent(['Jenkins']) {
                 sh "git push"
                 sh "git checkout master"
                 sh "git push"
