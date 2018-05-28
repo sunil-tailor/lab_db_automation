@@ -88,7 +88,7 @@ node {
         sh 'chmod 755 ./bin/*.sh'
         // def reqCode = sh( script: 'bin/state-nextReq.sh', returnStdout: true ).trim()
 
-        def $currentReqCode = null        
+        def currentReqCode = null        
         $currentReqCode = sh( script: 'ls -1 updates/ | sort -V | tail -n 1', returnStdout: true )
 
         echo "TEST -- ${currentReqCode}"
