@@ -168,8 +168,8 @@ node {
 
         File f = new File("./updates/${branchName}/DEPLOY_SCRIPTS/");
         f.mkdirs();
-        File f =  File("./updates/${branchName}/BACKOUT_SCRIPTS/");
-        f.mkdirs();
+        File ff = new File("./updates/${branchName}/BACKOUT_SCRIPTS/");
+        ff.mkdirs();
 
         writeFile file: "/updates/${branchName}/README.md" 
         writeFile file: "/updates/${branchName}/DEPLOY_SCRIPTS/001-$TS.sql", text: ''
