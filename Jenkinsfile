@@ -103,14 +103,10 @@ node {
             sh "echo ${newReqCode} >> state/requests.txt"
             sh "git commit -am 'created new REQ'"
 
-
             // Pushing everything to remote repository
-            // sshagent( credentials: ['aec45e23-c5aa-4ddd-8a0f-63a21d20191f'] ) {
-            sshagent( ['jenkins'] ) {
+            sshagent( credentials: ['jenkins'] ) {
                 sh "git push origin master"
             }
-
-      
         } else {
             currentBuild.result = 'FAILURE'
             echo 'System - You need to run the ./bin/initialise.sh and commit to repository'
