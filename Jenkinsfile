@@ -90,21 +90,25 @@ node {
         
         def $currentReqCode = sh( script: 'ls -1 updates/ | sort -V | tail -n 1', returnStdout: true )
 
+/*
         if ($currentReqCode == null) {
             println "its blank"
             $currentReqCode = '00001-CBO-00000000000000'
+            def newReqCode = nextReqCode($currentReqCode)
+            echo "DEBUG: currentReqCode  : ${currentReqCode}"
+            echo "DEBUG: newReqCode      : ${newReqCode}"
         }
-                           
+
+  */                         
         def sampleReqCode = '00001-CBO-00000000000000'
         def newREQ = nextReqCode(sampleReqCode)
-        def newReqCode = nextReqCode($currentReqCode)
+
 
 
         // def reqName = sh( script: 'bin/createNewReqBranch.sh', returnStdout: true ).trim()
         echo "DEBUG: sampleReqCode   : ${sampleReqCode}"
         echo "DEBUG: newREQ          : ${newREQ} "
-        echo "DEBUG: currentReqCode  : ${currentReqCode}"
-        echo "DEBUG: newReqCode      : ${newReqCode}"
+
         // echo "DEBUG: reqCode         : ${reqCode}"
         // echo "DEBUG: reqName         : ${reqName}"
 
