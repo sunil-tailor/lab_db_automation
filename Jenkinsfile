@@ -98,7 +98,7 @@ node {
             sh "git push"
 
             // Pushing everything to remote repository
-            sshagent(['Jenkins']) {
+            sshagent(['sunil.tailor']) {
                 sh "git push"
                 sh "git checkout master"
                 sh "git push"
