@@ -168,13 +168,13 @@ node {
 
 
         dir ("./updates/${branchName}/DEPLOY_SCRIPTS/") {
-            writeFile file: "001-${TS}.sql", text: ''
-            writeFile file: "002-${TS}.sql", text: ''
+            writeFile file: "001-${ts}.sql", text: ''
+            writeFile file: "002-${ts}.sql", text: ''
         }
 
         dir ("./updates/${branchName}/BACKOUT_SCRIPTS/") {
-            writeFile file: "001-${TS}.sql", text: ''
-            writeFile file: "002-${TS}.sql", text: ''
+            writeFile file: "001-${ts}.sql", text: ''
+            writeFile file: "002-${ts}.sql", text: ''
         }
         // writeFile file: "./updates/${branchName}/README.md" 
 
