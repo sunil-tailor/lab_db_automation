@@ -92,7 +92,7 @@ node {
             echo 'Yes - system initalised'
             def currentReqCode = sh( script: 'cat state/requests.txt | tail -n 1', returnStdout: true )
             def newReqCode = nextReqCode( currentReqCode )
-            sh "cat ${newReqCode} >> state/requests.txt"
+            sh "echo ${newReqCode} >> state/requests.txt"
             sh "git add state/requests.txt"
             sh "git commit 'created new REQ'"
             sh "git push"
