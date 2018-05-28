@@ -100,6 +100,9 @@ node {
             sh "git add ./state/requests.txt"
             sh "git commit 'created new REQ'"
 
+            echo "DEBUG: currentReqCode  : ${currentReqCode}"
+            echo "DEBUG: newReqCode      : ${newReqCode}"      
+
             // Pushing everything to remote repository
             // sshagent( credentials: ['aec45e23-c5aa-4ddd-8a0f-63a21d20191f'] ) {
             sshagent( ['jenkins'] {
@@ -107,8 +110,7 @@ node {
                 sh "git push origin master"
             }
 
-            println "DEBUG: currentReqCode  : ${currentReqCode}"
-            println "DEBUG: newReqCode      : ${newReqCode}"            
+      
         } else {
             currentBuild.result = 'FAILURE'
             echo 'System - You need to run the ./bin/initialise.sh and commit to repository'
