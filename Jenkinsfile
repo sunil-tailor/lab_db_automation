@@ -72,9 +72,6 @@ node {
         echo "note: ${params.note}"
         echo "Release Tags: ${params.releaseTags}"
     }
-    stage('Preparation') {
-
-    }
     stage('checkout') {
         checkout([
             $class: 'GitSCM',
@@ -83,9 +80,6 @@ node {
             // userRemoteConfigs: [ [ credentialsId: 'aec45e23-c5aa-4ddd-8a0f-63a21d20191f', url: 'git@github.com:sunil-tailor/lab_db_automation.git' ]]
             userRemoteConfigs: [ [ credentialsId: 'jenkins', url: 'git@github.com:sunil-tailor/lab_db_automation.git' ]]
         ])
-
-        // sh "git config -g user.email \"jenkins@indexfeed.com\""
-        // sh "git config -g user.name \"Jenkins User\""
     }   
     stage('Creating NEW Branch REQ Code') {
         sh 'chmod 755 ./bin/*.sh'
@@ -166,16 +160,37 @@ node {
         
         sh "git checkout -b ${branchName}"
 
+        def sqlText = "# SQL file filename is the order in which scripts are executed"
+
         dir ("./updates/${branchName}/DEPLOY_SCRIPTS/") {
-            writeFile file: "001-${ts}.sql", text: ''
-            writeFile file: "002-${ts}.sql", text: ''
+            writeFile file: "001-${ts}.sql", text: sqlText
+            writeFile file: "002-${ts}.sql", text: sqlText
         }
 
         dir ("./updates/${branchName}/BACKOUT_SCRIPTS/") {
-            writeFile file: "001-${ts}.sql", text: ''
-            writeFile file: "002-${ts}.sql", text: ''
+            writeFile file: "001-${ts}.sql", text: sqlText
+            writeFile file: "002-${ts}.sql", text: sqlText
         }
+
         writeFile file: "./updates/${branchName}/README.md", text: ''
+
+        // Create properties file with metadata
+        def contents = ''
+        contents = contents + "title=\"${params.title}\"\n"
+        contents = contents + "email=\"${params.email}\"\n"
+        contents = contents + "releaseTags=\"${params.releaseTags}\"\n"
+        if (params.note != '') {
+            contents = contents + "note=\"${params.note}\"\n"
+        }
+
+        writeFile file: "./updates/${branchName}/metadata.properties", text: contents
+
+        // Add annotated tagging
+        def tags = params.releaseTags.split(',')
+        for (tag in tags) {
+            tag = tag.trim()
+            sh "git tag -a ${tag} -m \"${params.title}\""
+        }
 
         sh "git add updates/${branchName}/*"
         sh "git commit -am 'First Commit for Branch ${branchName}'"

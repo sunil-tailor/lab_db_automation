@@ -1,0 +1,56 @@
+#!groovy
+
+properties([parameters([ 
+    string(
+        name: 'email',
+        defaultValue: 'joe.boggs@test.com',
+        description: 'email addresses separated by comma'
+    ),
+    string(
+        name: 'releaseCodes',
+        defaultValue: '00001',
+        description: 'codes for REQ db updates. NOTE: order you submit will be execution order.'
+    ),
+    string(
+        name: 'releaseTags',
+        defaultValue: 'br18.04',
+        description: 'tags, for target release'
+    )     
+])])
+
+node {
+    stage('Cleaning Workspace') {
+        deleteDir()
+    }
+    stage('Pre-Build Checks') {
+
+    }
+    stage('Checkout') {
+        checkout([
+            $class: 'GitSCM',
+            branches: scm.branches,
+            extensions: scm.extensions + [[$class: 'LocalBranch'], [$class: 'WipeWorkspace']],
+            // userRemoteConfigs: [ [ credentialsId: 'aec45e23-c5aa-4ddd-8a0f-63a21d20191f', url: 'git@github.com:sunil-tailor/lab_db_automation.git' ]]
+            userRemoteConfigs: [ [ credentialsId: 'jenkins', url: 'git@github.com:sunil-tailor/lab_db_automation.git' ]]
+        ])
+    }
+    stage('Building Package') {
+
+        def reqCodes = params.releaseCodes.split(',')
+        for (code in reqCodes) {
+            code = code.trim()
+        }
+
+        dir ('./build/archive') {
+            for (code in reqCodes) {
+                echo "cp -rp ./updates/REQ-${code}-CBO-* ./build/archive"
+                sh (script: "cp -rp ./updates/REQ-${code}-CBO-* ./build/archive/", returnStdout: false)
+            }
+        }
+
+        dir ('./build/target') {
+            zip zipFile: 'test.zip', archive: false, dir: './build/archive'
+            archiveArtifacts artifacts: 'test.zip', fingerprint: true
+        }
+    }
+}
